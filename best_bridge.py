@@ -1,36 +1,56 @@
-# best bridge
+# 169. Majority Element
+# Attempted
+# Easy
+# Topics
+# Companies
 
-# Write a function, best_bridge, that takes in a grid as an argument. The grid contains water (W) and land (L). 
-# There are exactly two islands in the grid. An island is a vertically or horizontally connected region of land. 
-# Return the minimum length bridge needed to connect the two islands. A bridge does not need to form a straight line.
+# Given an array nums of size n, return the majority element.
 
-def best_bridge(grid):
-  pass # todo
+# The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
 
+ 
 
+# Example 1:
 
+# Input: nums = [3,2,3]
+# Output: 3
 
+# Example 2:
 
+# Input: nums = [2,2,1,1,1,2,2]
+# Output: 2
 
+ 
 
+# Constraints:
 
-grid = [
-  ["W", "W", "W", "L", "L"],
-  ["L", "L", "W", "W", "L"],
-  ["L", "L", "L", "W", "L"],
-  ["W", "L", "W", "W", "W"],
-  ["W", "W", "W", "W", "W"],
-  ["W", "W", "W", "W", "W"],
-]
-best_bridge(grid) # -> 1
+#     n == nums.length
+#     1 <= n <= 5 * 104
+#     -109 <= nums[i] <= 109
 
+ 
+# Follow-up: Could you solve the problem in linear time and in O(1) space?
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        counts = {}
 
-grid = [
-  ["W", "W", "W", "W", "W"],
-  ["W", "W", "W", "W", "W"],
-  ["L", "L", "W", "W", "L"],
-  ["W", "L", "W", "W", "L"],
-  ["W", "W", "W", "L", "L"],
-  ["W", "W", "W", "W", "W"],
-]
-best_bridge(grid) # -> 2
+        for num in nums:
+            if num not in counts:
+                counts[num] = 1
+            else:
+                counts[num] += 1
+
+            # if counts[num] == n // 2: 
+            if counts[num] > n // 2: 
+                return num
+            
+        
+nums = 2,2,1,1,1,2,2          
+solution = Solution()
+
+print(solution.majorityElement(nums)) 
